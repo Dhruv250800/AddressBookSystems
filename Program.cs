@@ -14,7 +14,7 @@
             AddressBook address = new AddressBook();
             while (true)
             {
-                Console.WriteLine("Enter Option \n1) Add Contact \n2) Display Contact \n3) Edit Contact \n4) Delete Contact \n5) Save And Exit");
+                Console.WriteLine("Enter Option \n1) Add Contact \n2) Display Contact \n3) Edit Contact \n4) Delete Contact \n5) Save And Exit \n6) Save In CSV");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
@@ -36,21 +36,26 @@
                         ReadDataFromFile();
                         return;
                     case 6:
+                        CsvSerialise(AddressBook.con, book);
+                        Console.WriteLine("Data Saved in CSV file");
+                        CsvDeserialise();
+                        return;
+                    case 7:
                         AddressBook.SearchCity();
                         break;
-                    case 7:
+                    case 8:
                         AddressBook.SearchState();
                         break;
-                    case 8:
+                    case 9:
                         address.ViewByCityOrStateName();
                         break;
-                    case 9:
+                    case 10:
                         address.CountByCityOrStateName();
                         break;
-                    case 10:
+                    case 11:
                         address.SortByName(AddressBook.con);
                         break;
-                    case 11:
+                    case 12:
                         address.SortByChoice(AddressBook.con);
                         break;
                 }
@@ -98,5 +103,41 @@
         {
             Console.WriteLine("File not found.");
         }
+    }
+    static void CsvSerialise(List<Contact> addressBook, string bookName)
+    {
+        try
+        {
+            string csvPath = @"C:\Users\HP\source\repos\AddressBookSystems\AddressBookSystem.txt";
+            var writer = File.AppendText(csvPath);
+
+            foreach (var contact in addressBook)
+            {
+                writer.WriteLine(contact.Firstname + ", " + contact.Lastname + ", " + contact.PhoneNumber + ", " + contact.Email + ", " + contact.City + ", " + contact.State + ", " + contact.Zip + ".");
+
+            }
+            writer.Close();
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex);
+        }
+    }
+    static void CsvDeserialise()
+    {
+        string csvPath = @"C:\Users\HP\source\repos\AddressBookSystems\AddressBookSystem.txt";
+        using (var reader = new StreamReader(csvPath))
+
+        {
+            string s = " ";
+            while ((s = reader.ReadLine()) != null)
+            {
+                Console.WriteLine(s);
+            }
+
+        }
+
+
     }
 }
