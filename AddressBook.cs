@@ -39,4 +39,65 @@
             Console.WriteLine("E-mail - " + contact.Email);
         }
     }
+
+    public void EditContact()
+    {
+        Console.WriteLine("To Edit Contact Enter FirstName : ");
+        string name = Console.ReadLine();
+
+        foreach (var data in con)
+        {
+            if (con.Contains(data))
+            {
+                if (data.Firstname == name)
+                {
+                    Console.WriteLine("Name Exists");
+                    Console.WriteLine("To Edit Contact\n1)LastName\n2)Address\n3)City\n4)State\n5)Zip\n6)PhoneNumber\n7)Email");
+                    int option = Convert.ToInt32(Console.ReadLine());
+                    switch (option)
+                    {
+                        case 1:
+                            Console.WriteLine("Enter New LastName");
+                            string lastname = Console.ReadLine();
+                            data.Lastname = lastname;
+                            break;
+                        case 2:
+                            Console.WriteLine("Enter New Address");
+                            string address = Console.ReadLine();
+                            data.Address = address;
+                            break;
+                        case 3:
+                            Console.WriteLine("Enter New City");
+                            string city = Console.ReadLine();
+                            data.City = city;
+                            break;
+                        case 4:
+                            Console.WriteLine("Enter New State");
+                            string state = Console.ReadLine();
+                            data.State = state;
+                            break;
+                        case 5:
+                            Console.WriteLine("Enter New Zip");
+                            int zip = Convert.ToInt32(Console.ReadLine());
+                            data.Zip = zip;
+                            break;
+                        case 6:
+                            Console.WriteLine("Enter New PhoneNumber");
+                            long phonenumber = Convert.ToInt64(Console.ReadLine());
+                            data.PhoneNumber = phonenumber;
+                            break;
+                        case 7:
+                            Console.WriteLine("Enter new Email");
+                            string email = Console.ReadLine();
+                            data.Email = email;
+                            break;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Name Does Not Exist");
+                }
+            }
+        }
+    }
 }
