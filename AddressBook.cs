@@ -24,4 +24,19 @@
 
         con.Add(contact);
     }
+
+    public void Display()
+    {
+        foreach (Contact contact in con)
+        {
+            Console.WriteLine("FirstName - " + contact.Firstname);
+            Console.WriteLine("LastName - " + contact.Lastname);
+            Console.WriteLine("Address - " + contact.Address);
+            Console.WriteLine("City - " + contact.City);
+            Console.WriteLine("State - " + contact.State);
+            Console.WriteLine("Zip - " + contact.Zip);
+            Console.WriteLine("PhoneNumber - " + contact.PhoneNumber);
+            Console.WriteLine("E-mail - " + contact.Email);
+        }
+    }
 }
