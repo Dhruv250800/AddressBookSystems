@@ -1,6 +1,12 @@
-﻿internal class AddressBook
+﻿class AddressBook
 {
-    List<Contact> con = new List<Contact>();
+    public static Dictionary<string, List<Contact>> addressbooks = new Dictionary<string, List<Contact>>();
+    public static List<Contact> con = new List<Contact>();
+
+    public static void AddTo(string name)
+    {
+        addressbooks.Add(name, con);
+    }
     public void AddContact()
     {
         Contact contact = new Contact();
@@ -104,7 +110,18 @@
     {
         Console.WriteLine("To Edit Contact Enter FirstName : ");
         string name = Console.ReadLine();
-
-        con.Clear();
+        foreach (var details in con)
+        {
+            if (name == details.Firstname)
+            {
+                con.Remove(details);
+                Console.WriteLine("Contact is Deleted");
+                break;
+            }
+            else
+            {
+                Console.WriteLine("Contact is Not Present");
+            }
+        }
     }
 }
