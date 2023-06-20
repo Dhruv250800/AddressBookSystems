@@ -1,0 +1,10 @@
+﻿Book Name - My Life
+FirstName - Dhruv
+LastName - Gour
+Address - Delhi
+City - Delhi Old
+State - Delhi state
+Zip - 258741
+PhoneNumber - 9997199902
+E-mail - dhruv@gmail.com
+
