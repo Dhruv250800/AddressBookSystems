@@ -328,7 +328,9 @@
         {
             Console.WriteLine("Invalid selection, please select between 1 and 2");
         }
-
-
+    }
+    public void SortByName(List<Contact> contacts)
+    {
+        con = contacts.OrderBy(e => e.Firstname).ToList();
     }
 }
