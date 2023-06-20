@@ -100,4 +100,12 @@
             }
         }
     }
+
+    public void DeleteContact()
+    {
+        Console.WriteLine("To Edit Contact Enter FirstName : ");
+        string name = Console.ReadLine();
+
+        con.Clear();
+    }
 }
